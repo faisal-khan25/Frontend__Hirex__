@@ -1,0 +1,538 @@
+/* ══════════════════════════════════════════════════════════
+   MyApplications — page layout
+   ══════════════════════════════════════════════════════════ */
+
+.apps-page-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  min-height: calc(100vh - 60px);
+  padding: 28px 32px;
+  max-width: 1400px;
+  box-sizing: border-box;
+  transition: gap 0.25s ease;
+}
+
+.apps-content-area {
+  flex: 1;
+  min-width: 0;
+  transition: flex 0.25s ease;
+}
+
+/* ── Docked chat panel ───────────────────────────── */
+.apps-chat-panel {
+  width: 380px;
+  min-width: 340px;
+  max-width: 420px;
+  flex-shrink: 0;
+  margin-left: 24px;
+  position: sticky;
+  top: 80px;
+  height: calc(100vh - 104px);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(37, 99, 235, 0.14), 0 2px 8px rgba(0,0,0,0.08);
+  border: 1px solid #e5e7eb;
+  animation: chatPanelSlideIn 0.25s ease;
+}
+
+@keyframes chatPanelSlideIn {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.apps-chat-panel .chat-window--embedded {
+  height: 100%;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+}
+
+/* ── Page header ─────────────────────────────────── */
+.page-header {
+  margin-bottom: 24px;
+}
+
+.page-header h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.page-header p {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* ── Empty State ─────────────────────────────────── */
+.empty {
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.empty-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.empty-title {
+  font-weight: 600;
+  color: #4b5563;
+  margin-bottom: 6px;
+}
+
+.empty-subtitle {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* ── Loading ─────────────────────────────────────── */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  gap: 12px;
+  color: #6b7280;
+}
+
+.loading-spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #4f46e5;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Shortlisted banner ──────────────────────────── */
+.shortlisted-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+  border: 1.5px solid #6ee7b7;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #065f46;
+}
+
+.shortlisted-banner-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+/* ── Applications Card container ─────────────────── */
+.applications-card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Application Row Card ────────────────────────── */
+.app-row-card {
+  border-bottom: 1px solid #f3f4f6;
+  transition: background 0.15s;
+}
+
+.app-row-card:last-child {
+  border-bottom: none;
+}
+
+.app-row-card:hover {
+  background: #f9fafb;
+}
+
+.app-row-card--shortlisted {
+  background: #f0fdf4;
+  border-left: 3px solid #22c55e;
+}
+
+.app-row-card--shortlisted:hover {
+  background: #dcfce7;
+}
+
+.app-row-card--chat-active {
+  background: #eff6ff !important;
+  border-left: 3px solid #2563eb;
+}
+
+/* Main row flex */
+.app-row-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.app-row-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.app-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.app-company {
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 14px;
+}
+
+.app-date {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: 2px;
+}
+
+.app-row-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.app-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* ── Status badge (INTERVIEW_SCHEDULED) ──────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.badge-blue        { background: #dbeafe; color: #2563eb; }
+.badge-yellow      { background: #fef9c3; color: #92400e; }
+.badge-green       { background: #dcfce7; color: #16a34a; }
+.badge-red         { background: #fee2e2; color: #dc2626; }
+.badge-gray        { background: #f3f4f6; color: #6b7280; }
+
+/* ── Expand button ───────────────────────────────── */
+.btn-expand {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 7px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.btn-expand:hover {
+  background: #e5e7eb;
+}
+
+/* ── Interact button ─────────────────────────────── */
+.btn-interact {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.12s, box-shadow 0.15s;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+}
+
+.btn-interact:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+}
+
+.btn-interact--active {
+  background: linear-gradient(135deg, #64748b, #475569);
+  box-shadow: 0 2px 8px rgba(100, 116, 139, 0.3);
+}
+
+/* ── AI Interview button ─────────────────────────── */
+.btn-interview {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.12s, box-shadow 0.15s;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.35);
+}
+
+.btn-interview:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.5);
+}
+
+/* ── Live Interview button ───────────────────────── */
+.btn-live-interview {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #059669, #047857);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 2px 8px rgba(5, 150, 105, 0.3);
+  white-space: nowrap;
+}
+
+.btn-live-interview:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.5);
+}
+
+.btn-live-interview:active {
+  transform: translateY(0);
+}
+
+.btn-interview-pending {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f3f4f6;
+  color: #6b7280;
+  border: 1px dashed #d1d5db;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: default;
+}
+
+/* ── ATS Score Bar ───────────────────────────────── */
+.ats-score-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+}
+
+.ats-score-label {
+  font-size: 11px;
+  color: #6b7280;
+  font-weight: 600;
+  white-space: nowrap;
+  min-width: 80px;
+}
+
+.ats-score-track {
+  flex: 1;
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.ats-score-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.5s ease;
+}
+
+.ats-score-value {
+  font-size: 12px;
+  font-weight: 700;
+  min-width: 44px;
+  text-align: right;
+}
+
+/* ── Interview Card ──────────────────────────────── */
+.interview-card {
+  background: #fffbeb;
+  border: 1.5px solid #fde68a;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.interview-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #fef3c7;
+  border-bottom: 1px solid #fde68a;
+  font-size: 13px;
+  font-weight: 700;
+  color: #92400e;
+}
+
+.interview-card-icon { font-size: 16px; }
+
+.interview-badge {
+  margin-left: auto;
+  font-size: 10px;
+  padding: 2px 8px;
+  background: #d97706;
+  color: #fff;
+  border-radius: 99px;
+  font-weight: 700;
+}
+
+.interview-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 16px;
+  padding: 14px;
+}
+
+.interview-field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.interview-field--full {
+  grid-column: 1 / -1;
+}
+
+.interview-field-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #92400e;
+  opacity: 0.75;
+}
+
+.interview-field-value {
+  font-size: 13px;
+  color: #1f2937;
+  font-weight: 500;
+}
+
+.interview-field-value--muted {
+  color: #6b7280;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.interview-link {
+  font-size: 13px;
+  color: #2563eb;
+  word-break: break-all;
+  text-decoration: none;
+}
+
+.interview-link:hover {
+  text-decoration: underline;
+}
+
+/* ── Interview Pending Msg ───────────────────────── */
+.interview-pending-msg {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #f9fafb;
+  border: 1.5px dashed #d1d5db;
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+.interview-pending-msg span {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.interview-pending-msg strong {
+  display: block;
+  color: #374151;
+  margin-bottom: 4px;
+}
+
+.interview-pending-msg p {
+  color: #6b7280;
+  margin: 0;
+}
+
+/* ── Responsive ──────────────────────────────────── */
+@media (max-width: 1100px) {
+  .apps-chat-panel {
+    width: 320px;
+    min-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .apps-page-layout {
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .apps-chat-panel {
+    width: 100%;
+    min-width: unset;
+    max-width: unset;
+    margin-left: 0;
+    margin-top: 20px;
+    position: static;
+    height: 480px;
+    border-radius: 16px;
+    top: auto;
+  }
+
+  .app-row-main {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .app-row-right {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .interview-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
